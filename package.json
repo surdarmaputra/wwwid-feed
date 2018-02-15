@@ -1,0 +1,22 @@
+{
+  "name": "wwwid-feed",
+  "version": "1.0.0",
+  "description": "WWWID feed reader",
+  "main": "index.js",
+  "author": "@sdarmaputra <surya.igede@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack",
+    "test": "jasmine"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.9",
+    "jasmine": "^2.9.0",
+    "jasmine-dom-custom-matchers": "^1.0.2",
+    "jsdom": "^11.6.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}

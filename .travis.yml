@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "7"
+dist: trusty
+sudo: false
+cache:
+  yarn: true
+  directories:
+    - node_modules
+env:
+  - NODE_ENV=test
+install:
+  - yarn
+script:
+  - yarn test
