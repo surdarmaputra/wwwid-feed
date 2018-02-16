@@ -1,5 +1,8 @@
 const domMatchers = require('jasmine-dom-custom-matchers')
 const Feed = require('../../src/components/Feed')
+const Title = require('../../src/components/Title')
+const Meta = require('../../src/components/Meta')
+const Content = require('../../src/components/Content')
 
 describe('Feed', () => {
 	let feed
@@ -14,7 +17,7 @@ describe('Feed', () => {
 			summary: 'This is my first feed.',
 			pubDate: new Date()
 		}
-		feed = Feed(document, props)		
+		feed = Feed(props)		
 	})
 	
 	it('should be div element', () => {
@@ -36,43 +39,23 @@ describe('Feed', () => {
 		expect(info).toBeHTMLElement('div')
 		expect(info).toHaveClass('feed__info')
 	})
-
+	
 	it('should contain title inside info', () => {
 		const title = feed.children[1].children[0]
-		const a = title.children[0]
-		expect(title).toBeHTMLElement('div')
-		expect(title).toHaveClass('feed__title')
-		expect(a).toBeHTMLElement('a')
-		expect(a).toContainText(props.title)
+		const expected = Title({ text: props.title })
+		expect(title).toEqual(expected)
 	})
 
 	it('should contain meta inside info', () => {
 		const meta = feed.children[1].children[1]
-		expect(meta).toBeHTMLElement('div')
-		expect(meta).toHaveClass('feed__meta')
-	})
-	
-	it('should contain author inside meta', () => {
-		const author = feed.children[1].children[1].children[0]
-		expect(author).toBeHTMLElement('span')
-		expect(author).toHaveClass('feed__author')
-		expect(author).toContainText('by ' + props.author)
-	})
-	
-	it('should contain publication date inside meta', () => {
-		const date = feed.children[1].children[1].children[1]
-		const pubDate = props.pubDate
-		const shownDate = pubDate.getFullYear() + '-' + ('0' + pubDate.getMonth()).slice(-2) + '-' + ('0' + pubDate.getDate()).slice(-2)
-		expect(date).toBeHTMLElement('span')
-		expect(date).toHaveClass('feed__date')
-		expect(date).toContainText('at ' + shownDate)
+		const expected = Meta(props)
+		expect(meta).toEqual(expected)
 	})
 
 	it('should contain summary inside info', () => {
 		const summary = feed.children[1].children[2]
-		expect(summary).toBeHTMLElement('div')
-		expect(summary).toHaveClass('feed__summary')
-		expect(summary.innerHTML).toBe(props.summary)
+		const expected = Content({ content: props.summary })
+		expect(summary).toEqual(expected)
 	})
 })
 

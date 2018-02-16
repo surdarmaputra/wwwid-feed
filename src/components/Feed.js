@@ -1,6 +1,9 @@
 const { create } = require('../utils/dom')
+const Title = require('./Title')
+const Meta = require('./Meta')
+const Content = require('./Content')
 
-const Feed = (document, props) => {
+const Feed = (props) => {
 	const feed = create('div', {
 		className: 'feed'
 	})
@@ -24,45 +27,11 @@ const info = (props) => {
 		className: 'feed__info'
 	})
 	el.append(
-		title(props.title),
-		meta(props),
-		create('div', {
-			className: 'feed__summary',
-			innerHTML: props.summary
-		})
+		Title({ text: props.title }),
+		Meta(props),
+		Content({ content: props.summary })
 	)
 	return el
-}
-
-const title = (text) => {
-	const el = create('div', {
-		className: 'feed__title'
-	})
-	el.append(create('a', {
-		textContent: text
-	}))
-	return el
-}
-
-const meta = ({ author, pubDate }) => {
-	const el = create('div', {
-		className: 'feed__meta'
-	})
-	el.append(
-		create('span', {
-			className: 'feed__author',
-			textContent: 'by ' + author
-		}),
-		create('span', {
-			className: 'feed__date',
-			textContent: 'at ' + formatDate(pubDate)
-		})
-	)
-	return el
-}
-
-const formatDate = (date) => {
-	return date.getFullYear() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + ('0' + date.getDate()).slice(-2)
 }
 
 module.exports = Feed
