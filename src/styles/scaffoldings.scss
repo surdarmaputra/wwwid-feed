@@ -1,0 +1,10 @@
+@import './_variables.scss';
+
+body {
+	color: $color;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	line-height: $lineHeight;
+	margin: 0;
+	padding: $navBarHeight 0 0;
+}

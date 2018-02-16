@@ -1,0 +1,14 @@
+@import '../_variables.scss';
+
+.meta {
+	color: lighten($color, 20%);
+	font-size: $fontSize * 0.8;
+	
+	&__author {
+		margin-right: $baseline * 0.2;
+	}
+
+	&__date {
+		color: lighten($color, 40%);
+	}
+}
