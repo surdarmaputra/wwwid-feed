@@ -1,0 +1,45 @@
+@import '../_variables.scss';
+
+.navbar {
+	background: $primaryColor;
+	box-sizing: border-box;
+	color: #fff;
+	height: $navBarHeight;
+	line-height: $navBarHeight * 0.5;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 9;
+
+	&__title {
+		box-sizing: border-box;
+		display: block;
+		height: 100%;
+		padding: $baseline;
+		text-align: center;
+		width: 100%;
+	}
+
+	&__button {
+		background: $primaryColor;
+		box-sizing: border-box;
+		cursor: pointer;
+		height: 100%;
+		padding: $baseline;
+		position: absolute;
+		top: 0;
+		z-index: 1;
+
+		&:hover {
+			background: darken($primaryColor, 5%);
+		}
+
+		&--left {
+			left: 0;
+		}
+
+		&--right {
+			right: 0;
+		}
+	}
+}

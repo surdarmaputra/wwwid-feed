@@ -1,0 +1,37 @@
+@import '../_variables.scss';
+
+.feed {
+	box-sizing: border-box;
+	cursor: pointer;
+	display: block;
+	height: $feedHeight; 
+	padding: $baseline;
+	position: relative;
+	width: 100%;
+
+	&__thumbnail {
+		background: #ddd;
+		box-sizing: border-box;
+		float: left;
+		height: $feedThumbnailSize;
+		margin-right: $baseline;
+		overflow: hidden;
+		position: relative;
+		width: $feedThumbnailSize;
+
+		img {
+			height: 100%;
+		}
+	}
+
+	&__info {
+		box-sizing: border-box;
+		display: block;
+		height: 100%;
+		opacity: 0.8;
+	}
+
+	&:hover &__info {
+		opacity: 1;
+	}
+}
