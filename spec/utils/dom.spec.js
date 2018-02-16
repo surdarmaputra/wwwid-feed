@@ -22,4 +22,37 @@ describe('dom utils', () => {
 			expect(div).toHaveClass(props.className)
 		})
 	})
+
+	describe('draw', () => {
+		const { draw } = dom
+		it('should draw element into another element', () => {
+			const app = document.createElement('div')
+			app.id = 'app'
+			document.body.append(app)
+
+			const element = document.createElement('div')
+			element.id = 'child'
+
+			draw(element, app)
+			expect(app).toContainHTMLElement(element)
+		})
+		
+		it('should clean target descendant if target already have child element', () => {
+			const app = document.createElement('div')
+			app.id = 'app'
+			document.body.append(app)
+
+			const element = document.createElement('div')
+			element.id = 'child'
+
+			const anotherElement = document.createElement('div')
+			anotherElement.id = 'another-child'
+
+			draw(element, app)
+			draw(anotherElement, app)
+			expect(app.children.length).toBe(1)
+			expect(app).toContainHTMLElement(anotherElement)
+		})
+
+	})
 })

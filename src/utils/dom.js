@@ -8,6 +8,16 @@ const create = (element, props) => {
 	return el
 }
 
+const draw = (element, targetElement) => {
+	if (targetElement.children.length > 0) {
+		while(targetElement.firstChild) {
+			targetElement.removeChild(targetElement.firstChild)
+		}
+	}
+	targetElement.appendChild(element)
+}
+
 module.exports = {
-	create
+	create,
+	draw
 }
