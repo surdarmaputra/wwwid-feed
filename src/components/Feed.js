@@ -4,8 +4,9 @@ const Meta = require('./Meta')
 const Content = require('./Content')
 
 const Feed = (props) => {
-	const feed = create('div', {
-		className: 'feed'
+	const feed = create('a', {
+		className: 'feed',
+		href: props.href
 	})
 	feed.append(
 		thumbnail(props.thumbnail),
