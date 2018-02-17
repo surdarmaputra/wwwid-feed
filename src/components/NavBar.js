@@ -7,7 +7,7 @@ const NavBar = ({ title }) => {
 	navbar.append(
 		create('div', {
 			className: 'navbar__button navbar__button--left',
-			textContent: 'Back'
+			textContent: 'Home'
 		}),
 		create('div', {
 			className: 'navbar__title',

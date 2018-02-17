@@ -18,7 +18,7 @@ describe('NavBar', () => {
 		expect(navbar).toHaveClass('navbar')
 	})
 
-	it('should have back navigation', () => {
+	it('should have home navigation', () => {
 		const backNavigation = navbar.children[0]
 		expect(backNavigation).toBeHTMLElement('div')
 		expect(backNavigation).toHaveClass('navbar__button')		
