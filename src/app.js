@@ -36,21 +36,21 @@ const Detail = (props) => {
 	return detail
 }
 
+const routes = [
+	{
+		location: '/',
+		exact: true,
+		component: Home
+	},
+	{
+		location: '/article/{id}',
+		exact: false,
+		component: Detail
+	}
+]
+
 const Page = (props) => {
-	const routes = [
-		{
-			location: '/',
-			exact: true,
-			component: Home
-		},
-		{
-			location: '/article',
-			exact: false,
-			component: Detail
-		}
-	]
-	const page = routes.reduce((selected, current) => current.location === props.location ? current : selected, routes[0])
-	return page.component(props)
+	return props.route.component(props)
 }
 
 const withRouter = (component, props) => {
@@ -59,7 +59,7 @@ const withRouter = (component, props) => {
 	const route = getRoute()
 	const processRoute = (route) => {
 		const newProps = Object.assign({}, props, { 
-			location: route
+			route
 		})
 		draw(component(newProps), wrapper)
 	}
@@ -76,11 +76,39 @@ const withRouter = (component, props) => {
 }
 
 const getRoute = () => {
-	return location.hash.substr(1)
+	const currentLocation = location.hash.substr(1)
+	const paramsRegex = /{(.*?)}/g
+	const currentRoute = routes.reduce((selected, route) => {
+		const location = route.location.replace(/(\/{(.*?)})/g, '')
+		const additionalInfo = {
+			main: location
+		}
+		if (route.exact) {
+			return currentLocation === location ? Object.assign({}, route, additionalInfo) : selected
+		} else {
+			return currentLocation.search(location) > -1 ? Object.assign({}, route, additionalInfo) : selected
+		}
+	}, null)
+	let routeParams = currentRoute.location.match(paramsRegex)
+	if (routeParams !== null) routeParams = routeParams.map(param => param.replace(/{|}/g, ''))
+	else routeParams = []
+	console.log(routeParams)
+	const locationParams = currentLocation.replace(currentRoute.main, '').split('/').filter(param => param !== '')
+	currentRoute.params = {}
+	routeParams.forEach((param, index) => {
+		currentRoute.params[param] = locationParams[index]
+	})
+	console.log(locationParams)
+	console.log(currentRoute)
+	return currentRoute
 }
 
-const setRoute = (route) => {
+const setRoute = (route, params) => {
 	location.hash = '#' + route
+	return {
+		location: route,
+		params: typeof params === 'object' ? params : null
+	}
 }
 
 const App = () => {
