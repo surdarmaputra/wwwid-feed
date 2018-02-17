@@ -1,0 +1,16 @@
+@import '../_variables.scss';
+
+.article {
+	&__thumbnail {
+		width: 100%;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	&__body {
+		margin: $baseline 0;
+		padding: $baseline;
+	}
+}
