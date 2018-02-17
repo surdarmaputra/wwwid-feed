@@ -15,14 +15,19 @@ describe('Feed', () => {
 			author: 'Me',
 			thumbnail: 'sample.png',
 			summary: 'This is my first feed.',
-			pubDate: new Date()
+			pubDate: new Date(),
+			href: '/article/1'
 		}
 		feed = Feed(props)		
 	})
 	
-	it('should be div element', () => {
-		expect(feed).toBeHTMLElement('div')
+	it('should be a link element', () => {
+		expect(feed).toBeHTMLElement('a')
 		expect(feed).toHaveClass('feed')
+	})
+
+	it('should point to href', () => {
+		expect(feed.href).toBe(props.href)
 	})
 
 	it('should contain thumbnail', () => {
