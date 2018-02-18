@@ -3,7 +3,8 @@ const {
 	getRoute, 
 	setRoute, 
 	withRouter,
-	Link
+	Link,
+	normalizeRoute
 } = require('../../src/utils/router')
 
 describe('router', () => {
@@ -137,6 +138,15 @@ describe('router', () => {
 			expect(bareLink.href).toBe('')
 			expect(bareLink.className).toBe('')
 			expect(bareLink).toContainText('')
+		})
+	})
+
+	describe('normalizeRoute()', () => {
+		it('should add location hash', () => {
+			location.hash = ''
+			expect(location.href.indexOf('#') === -1).toBe(true)
+			normalizeRoute()
+			expect(location.href.indexOf('#') !== -1).toBe(true)
 		})
 	})
 })

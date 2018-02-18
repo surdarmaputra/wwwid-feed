@@ -14,14 +14,17 @@ const getRoute = (routes) => {
 			return currentLocation.search(location) > -1 ? Object.assign({}, route, additionalInfo) : selected
 		}
 	}, null)
-	let routeParams = currentRoute.location.match(paramsRegex)
-	if (routeParams !== null) routeParams = routeParams.map(param => param.replace(/{|}/g, ''))
-	else routeParams = []
-	const locationParams = currentLocation.replace(currentRoute.main, '').split('/').filter(param => param !== '')
-	currentRoute.params = {}
-	routeParams.forEach((param, index) => {
-		currentRoute.params[param] = locationParams[index]
-	})
+
+	if (currentRoute !== null) {
+		let routeParams = currentRoute.location.match(paramsRegex)
+		if (routeParams !== null) routeParams = routeParams.map(param => param.replace(/{|}/g, ''))
+		else routeParams = []
+		const locationParams = currentLocation.replace(currentRoute.main, '').split('/').filter(param => param !== '')
+		currentRoute.params = {}
+		routeParams.forEach((param, index) => {
+			currentRoute.params[param] = locationParams[index]
+		})
+	}
 	return currentRoute
 }
 
@@ -43,6 +46,7 @@ const withRouter = (component, routes) => (props) => {
 	window.onhashchange = () => {
 		const route = getRoute(routes)
 		processRoute(route)	
+		window.scrollTo(0,0)
 	}
 
 	processRoute(route)
@@ -55,12 +59,19 @@ const Link = (props) => {
 		className: val(props.className, ''),
 		href: val(props.href, ''),
 		textContent: val(props.textContent, ''),
-		onclick: (event) => {
+		onclick: function(event) {
 			event.preventDefault()
-			setRoute(event.target.pathname)
+			setRoute(this.pathname)
 		}
 	})
 	return link
+}
+
+const normalizeRoute = () => {
+	const hash = '#'
+	if (location.href.indexOf(hash) === -1) {
+		location.replace(location + '#/')
+	}
 }
 
 const val = (value, defaultValue) => typeof value !== 'undefined' ? value : defaultValue
@@ -69,5 +80,6 @@ module.exports = {
 	getRoute,
 	setRoute,
 	withRouter,
-	Link
+	Link,
+	normalizeRoute
 }
