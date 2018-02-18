@@ -8,3 +8,4 @@ global.window = window
 global.document = document
 global.Element = Element
 global.location = location
+global.window.scrollTo = () => ({  })
