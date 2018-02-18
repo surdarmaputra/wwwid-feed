@@ -5,7 +5,8 @@
 	color: $color;
 	cursor: pointer;
 	display: block;
-	height: $feedHeight; 
+	height: $feedHeight;
+	margin-bottom: $baseline * 0.5;
 	padding: $baseline;
 	position: relative;
 	text-decoration: none;
@@ -31,6 +32,7 @@
 		display: block;
 		height: 100%;
 		opacity: 0.8;
+		overflow: hidden;
 	}
 
 	&:hover &__info {

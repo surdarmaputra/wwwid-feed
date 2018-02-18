@@ -20,7 +20,7 @@ describe('NavBar', () => {
 
 	it('should have home navigation', () => {
 		const backNavigation = navbar.children[0]
-		expect(backNavigation).toBeHTMLElement('div')
+		expect(backNavigation).toBeHTMLElement('a')
 		expect(backNavigation).toHaveClass('navbar__button')		
 		expect(backNavigation).toHaveClass('navbar__button--left')
 	})
@@ -33,7 +33,7 @@ describe('NavBar', () => {
 
 	it('should have filter navigation', () => {
 		const filter = navbar.children[2]
-		expect(filter).toBeHTMLElement('div')
+		expect(filter).toBeHTMLElement('a')
 		expect(filter).toHaveClass('navbar__button')
 		expect(filter).toHaveClass('navbar__button--right')
 	})

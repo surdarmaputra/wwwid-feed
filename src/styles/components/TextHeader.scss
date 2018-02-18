@@ -1,0 +1,9 @@
+@import '../_variables.scss';
+
+.text-header {
+	display: block;
+	font-weight: bold;
+	margin-top: $baseline;
+	padding: $baseline;
+	text-align: center
+}

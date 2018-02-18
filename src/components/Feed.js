@@ -1,10 +1,11 @@
 const { create } = require('../utils/dom')
+const { Link } = require('../utils/router')
 const Title = require('./Title')
 const Meta = require('./Meta')
 const Content = require('./Content')
 
 const Feed = (props) => {
-	const feed = create('a', {
+	const feed = Link({
 		className: 'feed',
 		href: props.href
 	})

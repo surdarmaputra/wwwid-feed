@@ -18,7 +18,7 @@ const Meta = ({ author, pubDate }) => {
 }
 
 const formatDate = (date) => {
-	return date.getFullYear() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + ('0' + date.getDate()).slice(-2)
+	return typeof date === 'object' && date instanceof Date ? date.getFullYear() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + ('0' + date.getDate()).slice(-2) : ''
 }
 
 module.exports = Meta
