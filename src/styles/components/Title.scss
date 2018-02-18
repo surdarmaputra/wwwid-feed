@@ -3,4 +3,8 @@
 .title {
 	font-weight: bold;
 	color: darken($color, 10%);
+
+	a {
+		color: inherit;
+	}
 }

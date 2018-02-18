@@ -8,3 +8,33 @@ body {
 	margin: 0;
 	padding: $navBarHeight 0 0;
 }
+
+footer {
+	color: lighten($color, 20%);
+	font-size: $baseline * 0.8;
+	padding: $baseline;
+	text-align: center;
+}
+
+a {
+	color: $primaryColor;
+	text-decoration: none;
+}
+
+hr {
+	border: 1px solid $lineColor;
+}
+
+pre {
+	background: #efefef;
+	margin: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	padding: $baseline * 0.3 $baseline;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+#app {
+	min-height: 300px;
+}

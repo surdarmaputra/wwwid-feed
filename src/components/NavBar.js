@@ -1,21 +1,24 @@
 const { create } = require('../utils/dom')
+const { Link } = require('../utils/router')
 
 const NavBar = ({ title }) => {
 	const navbar = create('div', {
 		className: 'navbar'
 	})
 	navbar.append(
-		create('div', {
+		Link({
 			className: 'navbar__button navbar__button--left',
-			textContent: 'Home'
+			textContent: 'Home',
+			href: '/'
 		}),
 		create('div', {
 			className: 'navbar__title',
 			textContent: title
 		}),
-		create('div', {
+		Link({
 			className: 'navbar__button navbar__button--right',
-			textContent: 'Filter'
+			textContent: 'Filter',
+			href: '/filter'
 		})
 	)
 	return navbar

@@ -11,6 +11,11 @@
 
 	&__body {
 		margin: $baseline 0;
-		padding: $baseline;
+		padding: $baseline * 1.5;
+
+		.title {
+			font-size: $baseline * 1.8;
+			line-height: $baseline * 2;
+		}
 	}
 }

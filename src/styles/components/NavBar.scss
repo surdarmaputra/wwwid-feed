@@ -23,10 +23,12 @@
 	&__button {
 		background: $primaryColor;
 		box-sizing: border-box;
+		color: inherit;
 		cursor: pointer;
 		height: 100%;
 		padding: $baseline;
 		position: absolute;
+		text-decoration: none;
 		top: 0;
 		z-index: 1;
 
