@@ -7,5 +7,10 @@
 
 	&__item {
 		padding: $baseline * 0.7 $baseline;
+
+		&--hidden {
+			display: none;
+			padding: 0;
+		}
 	}
 }

@@ -5,7 +5,10 @@ const NavBar = ({ title }) => {
 	const navbar = create('div', {
 		className: 'navbar'
 	})
-	navbar.append(
+	const navbarInner = create('div', {
+		className: 'navbar__inner'
+	})
+	navbarInner.append(
 		Link({
 			className: 'navbar__button navbar__button--left',
 			textContent: 'Home',
@@ -21,6 +24,7 @@ const NavBar = ({ title }) => {
 			href: '/filter'
 		})
 	)
+	navbar.append(navbarInner)
 	return navbar
 }
 

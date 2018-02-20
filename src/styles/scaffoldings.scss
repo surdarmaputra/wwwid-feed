@@ -38,3 +38,36 @@ pre {
 #app {
 	min-height: 300px;
 }
+
+.page {
+	box-sizing: border-box;
+	margin: auto;
+	position: relative;
+
+	@media (min-width: 768px) {
+		width: $appWidth;
+	}
+}
+
+.feeds {
+	margin: $baseline 0;
+
+	@media (min-width: 768px) {
+		margin: $baseline * 2 0;
+	}
+}
+
+.search-box {
+	border: 1px solid #ddd;
+	border-radius: 50px;
+	color: lighten($color, 10%);
+	display: block;
+	font-size: $fontSize * 0.8;
+	margin: $baseline auto;
+	padding: $baseline * 0.5 $baseline;
+	width: 80%;
+
+	@media (min-width: 768px) {
+		margin: $baseline * 2 auto $baseline;
+	}
+}
