@@ -32,11 +32,9 @@ const withStore = (component, store) => (props) => {
 		store['_'+key] = store[key]
 		Object.defineProperty(store, key, {
 			get: function() {
-				console.log('get '+key)
 				return this['_'+key]
 			},
 			set: function(value) {
-				console.log('update '+key)
 				this['_'+key] = value
 				processChange()
 			}
@@ -47,7 +45,9 @@ const withStore = (component, store) => (props) => {
 }
 
 const Home = (props) => {
-	const home = create('div')
+	const home = create('div', {
+		className: 'feeds'
+	})
 	const feeds = props.feeds.map((feed) => {
 		home.append(Feed(feed))
 	})
@@ -67,12 +67,31 @@ const Detail = (props) => {
 
 const Filter = (props) => {
 	const filter = create('div')
+	const textBox = create('input', {
+		type: 'text',
+		className: 'search-box',
+		placeholder: 'Search category',
+		onkeyup: (event) => {
+			const shownCategories = props.categories.map(category => {
+				const item = filter.querySelector('#cat-'+category).closest('li')
+				let className
+				if (category.includes(event.target.value)) {
+					className = 'list__item'				
+				} else {
+					className = 'list__item list__item--hidden'
+				}					
+				if (item.className !== className) item.className = className
+			})
+			
+		}
+	})
 	const categories = props.categories.map((category) => Link({
 		textContent: category,
-		href: '/cat/'+category
+		href: '/cat/'+category,
+		id: 'cat-'+category
 	}))
 	filter.append(
-		TextHeader({ text: 'CATEGORIES' }),
+		textBox,
 		List({ items: categories })
 	)
 	return filter
@@ -114,10 +133,17 @@ const routes = [
 ]
 
 const Page = (props) => {
-	if (props.route !== null) return props.route.component(props)
-	else return create('div', {
-		textContent: 'Page not found'
+	const page = create('div', {
+		className: 'page'
 	})
+	if (props.route !== null) draw(props.route.component(props), page)
+	else  {
+		const notFound = create('div', {
+			textContent: 'Page not found'
+		})
+		draw(notFound, page)
+	}
+	return page
 }
 
 const App = () => {

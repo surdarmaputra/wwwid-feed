@@ -59,6 +59,7 @@ const Link = (props) => {
 		className: val(props.className, ''),
 		href: val(props.href, ''),
 		textContent: val(props.textContent, ''),
+		id: val(props.id),
 		onclick: function(event) {
 			event.preventDefault()
 			setRoute(this.pathname)

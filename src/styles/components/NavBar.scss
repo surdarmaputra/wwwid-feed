@@ -11,6 +11,16 @@
 	width: 100%;
 	z-index: 9;
 
+	&__inner {
+		box-sizing: border-box;
+		height: 100%;
+		margin: auto;
+		position: relative;
+		@media (min-width: 768px) {
+			width: $appWidth;
+		}
+	}
+
 	&__title {
 		box-sizing: border-box;
 		display: block;
