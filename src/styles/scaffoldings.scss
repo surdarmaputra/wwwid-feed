@@ -62,9 +62,9 @@ pre {
 	border-radius: 50px;
 	color: lighten($color, 10%);
 	display: block;
-	font-size: $fontSize * 0.8;
+	font-size: $fontSize;
 	margin: $baseline auto;
-	padding: $baseline * 0.5 $baseline;
+	padding: $baseline * 0.8 $baseline;
 	width: 80%;
 
 	@media (min-width: 768px) {

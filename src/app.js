@@ -1,3 +1,4 @@
+const sanitizeHtml = require('sanitize-html')
 const { create, draw } = require('./utils/dom')
 const { withRouter, Link, normalizeRoute } = require('./utils/router')
 const style = require('./app.scss')
@@ -44,6 +45,40 @@ const withStore = (component, store) => (props) => {
 	return wrapper
 }
 
+const setPageTitle = (appName, title) => {
+	document.head.querySelector('title').textContent = title + ' - ' + appName
+}
+
+const setPageDescription = ({ author, pubDate, categories, summary}) => {
+	const descriptionMeta = []
+	if (typeof author !== 'undefined') descriptionMeta.push('Author: ' + author)
+	if (typeof pubDate !== 'undefined') descriptionMeta.push('Publication Date: ' +  pubDate)
+	if (typeof categories !== 'undefined') descriptionMeta.push('Categories: ' + categories.join(', '))
+	if (typeof summary !== 'undefined') descriptionMeta.push('Summary: ' + summary)
+
+	const targetMeta = document.head.querySelector('meta[name="description"]')
+	if (typeof targetMeta !== 'undefined') targetMeta.setAttribute('content', descriptionMeta.join(', '))
+	else {
+		document.heade.append(create('meta', {
+			name: 'description',
+			content: descriptionMeta.join(', ')
+		}))
+	}
+}
+
+const setPageDefaultDescription = (message) => {
+	if (typeof message === 'undefined') message = "WWWID Reader, a simple yet powerfull RSS Feed reader for WWWID."
+	const targetMeta = document.head.querySelector('meta[name="description"]')
+	if (typeof targetMeta !== 'undefined') targetMeta.setAttribute('content', message)
+	else {
+		document.heade.append(create('meta', {
+			name: 'description',
+			content: message
+		}))
+	}
+
+}
+
 const Home = (props) => {
 	const home = create('div', {
 		className: 'feeds'
@@ -51,6 +86,8 @@ const Home = (props) => {
 	const feeds = props.feeds.map((feed) => {
 		home.append(Feed(feed))
 	})
+	setPageTitle(props.appName, 'Home')
+	setPageDefaultDescription()
 	return home
 }
 
@@ -59,9 +96,19 @@ const Detail = (props) => {
 	const article = props.feeds.reduce((selected, feed) => {
 		return feed.id == id ? feed : selected
 	}, null)
-	const detail = article !== null ? Article(article) : create('div', {
-		textContent: "Oop! There's nothing here"
-	})
+	let detail
+	if (article !== null) {
+		detail = Article(article) 
+		setPageTitle(props.appName, article.title)
+		setPageDescription(article)
+	} else {
+		const message = "Oop! There's nothing here"
+		detail = create('div', {
+			textContent: message
+		})
+		setPageTitle(props.appName, message)
+		setPageDefaultDescription(message)
+	}
 	return detail
 }
 
@@ -94,6 +141,8 @@ const Filter = (props) => {
 		textBox,
 		List({ items: categories })
 	)
+	setPageTitle(props.appName, 'Filter by category')
+	setPageDefaultDescription('WWWID feed filter by category.')
 	return filter
 }
 
@@ -106,6 +155,8 @@ const Category = (props) => {
 		TextHeader({ text: 'FEEDS UNDER "'+category+'"' }),
 		feedWrapper
 	)
+	setPageTitle(props.appName, 'Feeds under ' + category + ' category')
+	setPageDefaultDescription('WWWID feeds under ' + category + ' category')
 	return wrapper
 }
 
@@ -171,7 +222,7 @@ fetch(sourceUrl)
 			const feed = item
 			const id = key + 1
 			feed.id = id
-			feed.summary = item.content.match(/<p>(.*?)<\/p>/)[0].replace(/<p>|<\/p>/, '')
+			feed.summary = sanitizeHtml(item.content.match(/<p>(.*?)<\/p>/)[0].replace(/<p>|<\/p>/, ''))
 			feed.href = '/article/' + id
 			feed.pubDate = new Date(feed.pubDate)
 		
