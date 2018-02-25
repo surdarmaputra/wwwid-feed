@@ -1,15 +1,20 @@
 const cacheName = 'wwwid'
 const dataCacheName = 'wwwid-feeds'
 const dataSourceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid'
+const mainUrl = self.origin
 
 const filesToCache = [
-	'/',
-	'/#/',
-	'/index.html',
-	'/app.css',
-	'/app.js',
-	'/manifest.json',
-	'https://fonts.googleapis.com/css?family=Roboto:400'
+	mainUrl + '/',
+	mainUrl + '/#/',
+	mainUrl + '/index.html',
+	mainUrl + '/app.css',
+	mainUrl + '/app.js',
+	mainUrl + '/manifest.json',
+	'https://fonts.googleapis.com/css?family=Roboto:400',
+	mainUrl + '/images/wwwid-192.png',
+	mainUrl + '/images/wwwid-512.png',
+	mainUrl + '/images/wwwid-small.png',
+	mainUrl + '/images/wwwid-text.png'
 ]
 
 self.addEventListener('install', function(e) {
