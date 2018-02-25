@@ -2,7 +2,19 @@
 	"short_name": "WWWID Reader",
 	"name": "WWWID Reader",
 	"start_url": "/",
-	"background_color": "#E3475E",
-	"theme_color": "#E3475E",
-	"display": "standalone"
+	"background_color": "#DE3047",
+	"theme_color": "#DE3047",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "images/wwwid-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "images/wwwid-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
 }

@@ -142,7 +142,8 @@ pre {
 
 .meta {
   color: #3c3c3c;
-  font-size: 12.8px; }
+  font-size: 12.8px;
+  margin-bottom: 8px; }
   .meta__author {
     margin-right: 3.2px; }
   .meta__date {
