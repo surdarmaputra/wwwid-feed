@@ -2,7 +2,7 @@ const cacheName = 'wwwid'
 const dataCacheName = 'wwwid-feeds'
 const dataSourceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid'
 const mainUrl = self.origin
-
+console.log(self)
 const filesToCache = [
 	mainUrl + '/',
 	mainUrl + '/#/',
