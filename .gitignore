@@ -60,3 +60,6 @@ typings/
 # Editor files
 *.swp
 *.swo
+
+# builds
+dist
