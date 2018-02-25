@@ -7,11 +7,6 @@
 	"display": "standalone",
 	"icons": [
 		{
-			"src": "images/wwwid-192.png",
-			"type": "image/png",
-			"sizes": "192x192"
-		},
-		{
 			"src": "images/wwwid-512.png",
 			"type": "image/png",
 			"sizes": "512x512"

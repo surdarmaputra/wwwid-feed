@@ -3,8 +3,6 @@ const dataCacheName = 'wwwid-feeds'
 const dataSourceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid'
 const mainUrl = self.registration.scope
 
-console.log(self)
-console.log(mainUrl)
 const filesToCache = [
 	mainUrl,
 	mainUrl + '#/',
@@ -12,7 +10,6 @@ const filesToCache = [
 	mainUrl + 'app.css',
 	mainUrl + 'app.js',
 	mainUrl + 'manifest.json',
-	mainUrl + 'images/wwwid-192.png',
 	mainUrl + 'images/wwwid-512.png',
 	mainUrl + 'images/wwwid-small.png',
 	mainUrl + 'images/wwwid-text.png',
