@@ -6903,12 +6903,12 @@ const Link = (props) => {
 		className: val(props.className, ''),
 		href: val(props.href, ''),
 		textContent: val(props.textContent, ''),
-		id: val(props.id),
 		onclick: function(event) {
 			event.preventDefault()
 			setRoute(this.pathname)
 		}
-	})
+	})		
+	if (typeof props.id !== 'undefined') link.id = val(props.id)
 	return link
 }
 
@@ -12583,7 +12583,7 @@ const routes = [
 ]
 
 const Page = (props) => {
-	const page = create('div', {
+	const page = create('main', {
 		className: 'page'
 	})
 	if (props.route !== null) draw(props.route.component(props), page)
@@ -25177,7 +25177,7 @@ const { create } = __webpack_require__(2)
 const { Link } = __webpack_require__(29)
 
 const NavBar = ({ title }) => {
-	const navbar = create('div', {
+	const navbar = create('nav', {
 		className: 'navbar'
 	})
 	const navbarInner = create('div', {
@@ -25222,17 +25222,20 @@ const Feed = (props) => {
 		href: props.href
 	})
 	feed.append(
-		thumbnail(props.thumbnail),
+		thumbnail(props),
 		info(props)
 	)
 	return feed
 }
 
-const thumbnail = (src) => {
+const thumbnail = ({ thumbnail, title }) => {
 	const el = create('div', {
 		className: 'feed__thumbnail'
 	})
-	el.append(create('img', { src }))
+	el.append(create('img', { 
+		src: thumbnail,
+		alt: "Image for " + title
+	}))
 	return el
 }
 

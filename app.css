@@ -1,5 +1,5 @@
 body {
-  color: #444;
+  color: #222;
   font-family: "Roboto", sans-serif, Arial;
   font-size: 16px;
   line-height: 22.4px;
@@ -7,13 +7,13 @@ body {
   padding: 50px 0 0; }
 
 footer {
-  color: #777777;
+  color: #555555;
   font-size: 12.8px;
   padding: 16px;
   text-align: center; }
 
 a {
-  color: #E3475E;
+  color: #911727;
   text-decoration: none; }
 
 hr {
@@ -48,7 +48,7 @@ pre {
 .search-box {
   border: 1px solid #ddd;
   border-radius: 50px;
-  color: #5e5e5e;
+  color: #3c3c3c;
   display: block;
   font-size: 12.8px;
   margin: 16px auto;
@@ -61,7 +61,7 @@ pre {
       margin: 32px auto 16px; } }
 
 .navbar {
-  background: #E3475E;
+  background: #DE3047;
   box-sizing: border-box;
   color: #fff;
   height: 50px;
@@ -86,7 +86,7 @@ pre {
     text-align: center;
     width: 100%; }
   .navbar__button {
-    background: #E3475E;
+    background: #DE3047;
     box-sizing: border-box;
     color: inherit;
     cursor: pointer;
@@ -97,7 +97,7 @@ pre {
     top: 0;
     z-index: 1; }
     .navbar__button:hover {
-      background: #e0314b; }
+      background: #d32239; }
     .navbar__button--left {
       left: 0; }
     .navbar__button--right {
@@ -105,7 +105,7 @@ pre {
 
 .feed {
   box-sizing: border-box;
-  color: #444;
+  color: #222;
   cursor: pointer;
   display: block;
   height: 200px;
@@ -136,17 +136,17 @@ pre {
 
 .title {
   font-weight: bold;
-  color: #2b2b2b; }
+  color: #090909; }
   .title a {
     color: inherit; }
 
 .meta {
-  color: #777777;
+  color: #3c3c3c;
   font-size: 12.8px; }
   .meta__author {
     margin-right: 3.2px; }
   .meta__date {
-    color: #aaaaaa; }
+    color: #555555; }
 
 .content {
   padding-top: 8px;
