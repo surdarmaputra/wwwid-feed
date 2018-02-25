@@ -1,7 +1,7 @@
 {
 	"short_name": "WWWID Reader",
 	"name": "WWWID Reader",
-	"start_url": "/",
+	"start_url": "",
 	"background_color": "#DE3047",
 	"theme_color": "#DE3047",
 	"display": "standalone",
