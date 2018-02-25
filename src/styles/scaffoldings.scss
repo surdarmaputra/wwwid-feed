@@ -17,7 +17,7 @@ footer {
 }
 
 a {
-	color: $primaryColor;
+	color: darken($primaryColor, 20%);
 	text-decoration: none;
 }
 
@@ -62,10 +62,14 @@ pre {
 	border-radius: 50px;
 	color: lighten($color, 10%);
 	display: block;
-	font-size: $fontSize;
+	font-size: $fontSize * 0.8;
 	margin: $baseline auto;
 	padding: $baseline * 0.8 $baseline;
 	width: 80%;
+
+	&:focus {
+		outline: none;
+	}	
 
 	@media (min-width: 768px) {
 		margin: $baseline * 2 auto $baseline;

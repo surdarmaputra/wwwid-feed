@@ -13,8 +13,8 @@ describe('NavBar', () => {
 		navbar = NavBar(props)
 	})
 
-	it('should return div element with class navbar', () => {
-		expect(navbar).toBeHTMLElement('div')
+	it('should return nav element with class navbar', () => {
+		expect(navbar).toBeHTMLElement('nav')
 		expect(navbar).toHaveClass('navbar')
 	})
 

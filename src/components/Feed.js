@@ -10,17 +10,20 @@ const Feed = (props) => {
 		href: props.href
 	})
 	feed.append(
-		thumbnail(props.thumbnail),
+		thumbnail(props),
 		info(props)
 	)
 	return feed
 }
 
-const thumbnail = (src) => {
+const thumbnail = ({ thumbnail, title }) => {
 	const el = create('div', {
 		className: 'feed__thumbnail'
 	})
-	el.append(create('img', { src }))
+	el.append(create('img', { 
+		src: thumbnail,
+		alt: "Image for " + title
+	}))
 	return el
 }
 
