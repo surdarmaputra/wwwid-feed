@@ -2,7 +2,7 @@ const { create } = require('../utils/dom')
 const { Link } = require('../utils/router')
 
 const NavBar = ({ title }) => {
-	const navbar = create('div', {
+	const navbar = create('nav', {
 		className: 'navbar'
 	})
 	const navbarInner = create('div', {
