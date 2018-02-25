@@ -1,4 +1,3 @@
-const sanitizeHtml = require('sanitize-html')
 const { create, draw } = require('./utils/dom')
 const { withRouter, Link, normalizeRoute } = require('./utils/router')
 const style = require('./app.scss')
@@ -122,7 +121,7 @@ const Filter = (props) => {
 			const shownCategories = props.categories.map(category => {
 				const item = filter.querySelector('#cat-'+category).closest('li')
 				let className
-				if (category.includes(event.target.value)) {
+				if (category.includes(event.target.value.toLowerCase())) {
 					className = 'list__item'				
 				} else {
 					className = 'list__item list__item--hidden'
@@ -184,7 +183,7 @@ const routes = [
 ]
 
 const Page = (props) => {
-	const page = create('div', {
+	const page = create('main', {
 		className: 'page'
 	})
 	if (props.route !== null) draw(props.route.component(props), page)
@@ -215,24 +214,43 @@ draw(MainApp(), document.getElementById('app'))
 
 const sourceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid'
 
-fetch(sourceUrl)
-	.then((response) => response.json())
-	.then((response) => {
-		store.feeds = response.items.map((item, key) => {
-			const feed = item
-			const id = key + 1
-			feed.id = id
-			feed.summary = sanitizeHtml(item.content.match(/<p>(.*?)<\/p>/)[0].replace(/<p>|<\/p>/, ''))
-			feed.href = '/article/' + id
-			feed.pubDate = new Date(feed.pubDate)
-		
-			item.categories.map((category) => {
-				if (!store.categories.includes(category)) store.categories.push(category)
-			})
-
-			return feed
+const getFeeds = (sourceUrl) => {
+	if ('caches' in window) {
+		caches.match(sourceUrl).then(response => {
+			if (response) {
+				response.json().then(json => updateFeeds(json))
+			}
 		})
-		store.categories.sort()
-		console.log(store.categories)
+	}
+
+	fetch(sourceUrl)
+		.then(response => {
+			response.json().then(json => updateFeeds(json))
+		})
+		.catch(error => console.log('Failed to fetch RSS feeds.', error))
+}
+
+const updateFeeds = (response) => {
+	store.feeds = response.items.map((item, key) => {
+		const feed = item
+		const id = key + 1
+		feed.id = id
+		feed.summary = item.content.match(/<p>(.*?)<\/p>/)[0].replace(/<p>|<\/p>/, '')
+		feed.href = '/article/' + id
+		feed.pubDate = new Date(feed.pubDate)
+	
+		item.categories.map((category) => {
+			if (!store.categories.includes(category)) store.categories.push(category.toLowerCase())
+		})
+
+		return feed
 	})
-	.catch((error) => console.log('Something wrong', error))
+	store.categories.sort()
+}
+
+getFeeds(sourceUrl)
+
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('service-worker.js')
+}
+
