@@ -36,7 +36,7 @@ describe('Feed', () => {
 		expect(thumbnail).toBeHTMLElement('div')
 		expect(thumbnail).toHaveClass('feed__thumbnail')
 		expect(img).toBeHTMLElement('img')
-		expect(img).toHaveAttribute('src', props.thumbnail)
+		expect(img).toHaveAttribute('data-src', props.thumbnail)
 	})
 
 	it('should contain info', () => {

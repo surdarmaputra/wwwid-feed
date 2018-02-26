@@ -20,10 +20,13 @@ const thumbnail = ({ thumbnail, title }) => {
 	const el = create('div', {
 		className: 'feed__thumbnail'
 	})
-	el.append(create('img', { 
-		src: thumbnail,
+	const img = create('img', {
+		className: 'lazy-image',
+		src: 'images/wwwid-hollow-192.png',
 		alt: "Image for " + title
-	}))
+	})
+	img.dataset.src = thumbnail
+	el.append(img)
 	return el
 }
 
