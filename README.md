@@ -1,7 +1,7 @@
 
-<div style="text-align:center; width: 100%;">
-![wwwid-unofficial-icon](./src/images/wwwid-512.png)
-</div>
+<p align="center">
+<img src="./src/images/wwwid-512.png" width="200" style="margin: auto;">
+</p>
 
 # WWWID Reader #
 
