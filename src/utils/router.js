@@ -30,7 +30,7 @@ const getRoute = (routes) => {
 
 const setRoute = (route) => location.hash = '#' + route
 
-const withRouter = (component, routes) => (props) => {
+const withRouter = (component, routes, routeChangeCallback) => (props) => {
 	const hash = '#'
 	const wrapper = create('div')
 	const route = getRoute(routes)
@@ -39,6 +39,7 @@ const withRouter = (component, routes) => (props) => {
 			route
 		})
 		draw(component(newProps), wrapper)
+		if (typeof routeChangeCallback === 'function') routeChangeCallback()
 	}
 	if (location.href.indexOf(hash) === -1) {
 		location.replace(location + '#/')

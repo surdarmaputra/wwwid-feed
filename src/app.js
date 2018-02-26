@@ -11,17 +11,42 @@ const store = {
 	appName: 'WWWID Reader',
 	feeds: [
 		{
-			title: 'My Feed',
-			author: 'Me',
-			thumbnail: 'https://cdn-images-1.medium.com/max/939/1*DAksMcGmL2voVF39xrACQA.png',
-			summary: 'This is my first feed.',
-			content: '<p>This is my first feed.</p>',
+			title: 'WWWID Reader',
+			author: 'Admin',
+			thumbnail: 'images/wwwid-192.png',
+			summary: 'WWWID Reader is RSS feed reader for WWWID articles.',
+			content: '<p>WWWID Reader is RSS feed reader for WWWID articles.</p>',
 			pubDate: new Date(),
 			href: '/'
 		}
 	],
 	categories: []
 }
+
+let lazyImages = []
+const trackImages = () => {
+	lazyImages = document.querySelectorAll('.lazy-image')
+	loadImages()	
+}
+
+const loadImages = () => {
+	lazyImages.forEach(img => {
+		const position = img.getBoundingClientRect()
+		if (isInViewport(position.y)) {
+			const realSource = img.getAttribute('data-src')
+			if (typeof realSource !== 'undefined' && realSource !== null) {
+				img.src = realSource
+				img.removeAttribute('data-src')
+			}
+		}
+	})
+} 
+
+const isInViewport = (yPostion) => {
+	if (yPostion > 0 && yPostion < 500) return true
+	else return false
+}
+
 
 const withStore = (component, store) => (props) => {
 	const wrapper = create('div')
@@ -198,15 +223,15 @@ const Page = (props) => {
 
 const App = () => {
 	const app = create('div')
-	const Router = withRouter(Page, routes)
+	const Router = withRouter(Page, routes, () => {
+		trackImages()
+	})
 	app.append(
 		NavBar({ title: store.appName }),
 		Router(store)
 	)
 	return app
 }
-
-
 
 normalizeRoute()
 const MainApp = withStore(App, store)
@@ -246,6 +271,7 @@ const updateFeeds = (response) => {
 		return feed
 	})
 	store.categories.sort()
+	trackImages()
 }
 
 getFeeds(sourceUrl)
@@ -254,3 +280,6 @@ if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('service-worker.js')
 }
 
+trackImages()
+window.addEventListener('load', loadImages)
+window.addEventListener('scroll', loadImages)
