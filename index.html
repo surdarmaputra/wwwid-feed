@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="WWWID Reader, a simple yet powerfull RSS Feed reader for WWWID.">
-	<meta name="theme-color" content="#DE3047">
-	<title>WWWID READER</title>
-	<link rel="shortcut icon" type="image/png" href="images/wwwid-small.png">
-	<link rel="manifest" href="manifest.json">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
-<link href="app.css" rel="stylesheet"></head>
-<body>
-	<div id="app">
-		<nav class="navbar">
-			<div class="navbar__inner">
-				<div class="navbar__title">WWWID Reader</div>
-			</div>
-		</nav>
-		<main>
-
-		</main>
-	</div>	
-	<footer>Crafted with &hearts; by sdarmaputra</footer>
-<script type="text/javascript" src="app.js"></script></body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="WWWID Reader, a simple yet powerfull RSS Feed reader for WWWID."><meta name="theme-color" content="#DE3047"><title>WWWID READER</title><link rel="shortcut icon" type="image/png" href="images/wwwid-small.png"><link rel="manifest" href="manifest.json"><style>body{color:#222;font-size:16px;line-height:22.4px;margin:0;padding:50px 0 0}footer{color:#555;font-size:12.8px;padding:16px;text-align:center}a{color:#911727;text-decoration:none}hr{border:1px solid #eee}#app{min-height:300px}.page{box-sizing:border-box;margin:auto;position:relative}@media (min-width:768px){.page{width:560px}}.feeds{margin:16px 0}@media (min-width:768px){.feeds{margin:32px 0}}.navbar{background:#de3047;box-sizing:border-box;color:#fff;height:50px;line-height:25px;position:fixed;top:0;width:100%;z-index:2}.navbar__inner{box-sizing:border-box;height:100%;margin:auto;position:relative}@media (min-width:768px){.navbar__inner{width:560px}}.navbar__title{display:block;text-align:center;width:100%}.navbar__button,.navbar__title{box-sizing:border-box;height:100%;padding:16px}.navbar__button{background:#de3047;color:inherit;cursor:pointer;position:absolute;text-decoration:none;top:0;z-index:1}.navbar__button:hover{background:#d32239}.navbar__button--left{left:0}.navbar__button--right{right:0}</style></head><body><div id="app"><nav class="navbar"><div class="navbar__inner"><div class="navbar__title">WWWID Reader</div></div></nav><main></main></div><footer>Crafted with &hearts; by sdarmaputra</footer><noscript id="deferred-styles"><link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet"><link href="app.css" rel="stylesheet"></noscript><script>function loadDeferredStyles() {
+			const stylesNode = document.getElementById('deferred-styles')
+			const replacement = document.createElement('div')
+			replacement.innerHTML = stylesNode.textContent
+			document.body.appendChild(replacement)			
+		}
+		const raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
+		if (raf) {
+			raf(function() { 
+				window.setTimeout(loadDeferredStyles, 0)
+	  		})
+		} else window.addEventListener('load', loadDeferredStyles)</script><script type="text/javascript" src="app.js" defer="defer"></script></body></html>
