@@ -1,6 +1,7 @@
 const { create, draw } = require('./utils/dom')
 const { withRouter, Link, normalizeRoute } = require('./utils/router')
 const style = require('./app.scss')
+const criticalStyle = require('./app.crit')
 const NavBar = require('./components/NavBar')
 const Feed = require('./components/Feed')
 const Article = require('./components/Article')
