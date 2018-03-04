@@ -1,8 +1,22 @@
 @import '../_variables.scss';
+@import '../_mixins.scss';
 
 .content {
 	padding-top: $baseline * 0.5;
 	word-wrap: break-word;
+
+	&--empty {
+		.paragraph-line {
+			@include empty;
+			height: $baseline * 0.7;
+			margin-bottom: $baseline * 0.3;
+			width: 100%;
+									     
+			&--half {
+				width: 50%;							      
+			}							    
+		}	  
+	}
 
 	img {
 		width: 100%;

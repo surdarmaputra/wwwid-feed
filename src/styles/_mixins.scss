@@ -1,0 +1,9 @@
+@import './_variables.scss';
+@import './animations.scss';
+
+@mixin empty {
+	animation: glowing 1.5s ease-in infinite;
+	background: linear-gradient(to right, $emptyColor, #ccc, $emptyColor); 
+	background-size: 200%;
+	background-position: 200% 0%;
+}

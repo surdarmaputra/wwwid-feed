@@ -4,6 +4,7 @@ const {
 	setPageDescription,
 	setPageDefaultDescription } = require('../utils/page')
 const Article = require('../components/Article')
+const ErrorPage = require('../components/ErrorPage')
 
 const Detail = (props) => {
 	const id = props.route.params.id
@@ -17,8 +18,11 @@ const Detail = (props) => {
 		setPageDescription(article)
 	} else {
 		const message = "Oop! There's nothing here"
-		detail = create('div', {
-			textContent: message
+		detail = ErrorPage({
+			title: 'Oops!',
+			description: "There's nothing here...",
+			actionText: 'Back to Home',
+			actionLink: '/'
 		})
 		setPageTitle(props.appName, message)
 		setPageDefaultDescription(message)

@@ -47,5 +47,8 @@ hr {
 	}
 }
 
-@import './styles/components/Feed.scss';
 @import './styles/components/NavBar.scss';
+@import './styles/components/Feed.scss';
+@import './styles/components/Title.scss';
+@import './styles/components/Meta.scss';
+@import './styles/components/Content.scss';

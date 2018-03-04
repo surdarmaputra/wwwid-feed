@@ -1,4 +1,5 @@
 const { create, draw } = require('../utils/dom')
+const ErrorPage = require('../components/ErrorPage')
 
 const Page = (props) => {
 	const page = create('main', {
@@ -6,8 +7,11 @@ const Page = (props) => {
 	})
 	if (props.route !== null) draw(props.route.component(props), page)
 	else  {
-		const notFound = create('div', {
-			textContent: 'Page not found'
+		const notFound = ErrorPage({
+			title: 'Oops!',
+			description: "There's nothing here...",
+			actionText: 'Back to Home',
+			actionLink: '/'
 		})
 		draw(notFound, page)
 	}
