@@ -1,0 +1,22 @@
+@import '../_variables.scss';
+
+.error-page {
+	margin: $baseline;
+	min-height: 300px; 
+	padding: $baseline * 2 $baseline;
+	text-align: center;
+
+	&__title {
+		display: block;
+		font-size: $fontSize * 2;
+		margin-bottom: $baseline;
+		width: 100%;
+	}
+
+	&__description {
+		color: lighten($color, 10%);
+		display: block;
+		margin-bottom: $baseline * 2.5;
+		width: 100%;
+	}
+}

@@ -14,17 +14,7 @@ const sourceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fme
 
 const store = {
 	appName: 'WWWID Reader',
-	feeds: [
-		{
-			title: 'WWWID Reader',
-			author: 'Admin',
-			thumbnail: 'images/wwwid-192.png',
-			summary: 'WWWID Reader is RSS feed reader for WWWID articles.',
-			content: '<p>WWWID Reader is RSS feed reader for WWWID articles.</p>',
-			pubDate: new Date(),
-			href: '/'
-		}
-	],
+	feeds: [],
 	categories: []
 }
 

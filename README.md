@@ -52,7 +52,7 @@ We use [gh-pages](https://github.com/tschaub/gh-pages) to deploy the app into Gi
 
 ## Audit ##
 
-We use [Lighthouse](https://developers.google.com/web/tools/lighthouse/)to help us auditing and improving the app quality. Audit logs located in directory `audits`
+We use [Lighthouse](https://developers.google.com/web/tools/lighthouse/) to help us auditing and improving the app quality. Audit logs located in directory `audits`
 
 ## License ##
 MIT
