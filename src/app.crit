@@ -1,0 +1,51 @@
+@import './styles/_variables.scss';
+
+body {
+	color: $color;
+	font-size: $fontSize;
+	font-family: 'Arial';
+	line-height: $lineHeight;
+	margin: 0;
+	padding: $navBarHeight 0 0;
+}
+
+footer {
+	color: lighten($color, 20%);
+	font-size: $baseline * 0.8;
+	padding: $baseline;
+	text-align: center;
+}
+
+a {
+	color: darken($primaryColor, 20%);
+	text-decoration: none;
+}
+
+hr {
+	border: 1px solid $lineColor;
+}
+
+#app {
+	min-height: 300px;
+}
+
+.page {
+	box-sizing: border-box;
+	margin: auto;
+	position: relative;
+
+	@media (min-width: 768px) {
+		width: $appWidth;
+	}
+}
+
+.feeds {
+	margin: $baseline 0;
+
+	@media (min-width: 768px) {
+		margin: $baseline * 2 0;
+	}
+}
+
+@import './styles/components/Feed.scss';
+@import './styles/components/NavBar.scss';
