@@ -3,6 +3,7 @@
 body {
 	color: $color;
 	font-size: $fontSize;
+	font-family: 'Arial';
 	line-height: $lineHeight;
 	margin: 0;
 	padding: $navBarHeight 0 0;
@@ -46,4 +47,5 @@ hr {
 	}
 }
 
+@import './styles/components/Feed.scss';
 @import './styles/components/NavBar.scss';
