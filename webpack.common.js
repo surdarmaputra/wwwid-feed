@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
@@ -15,6 +16,7 @@ const DIST = path.resolve(__dirname, 'dist')
 const generatePage = new HTMLWebpackPlugin({
 	title: 'WWWID READER',
 	template: path.resolve(SRC, 'index.html'),
+	inject: 'head',
 	minify: {
 		collapseInlineTagWhitespace: true,
 		collapseWhitespace: true,
@@ -47,7 +49,13 @@ const injectScript = new ScriptExtHtmlWebpackPlugin({
 })
 
 const config = {
-	entry: path.resolve(SRC, 'app.js'),
+	entry: {
+		commons: [
+			path.resolve(SRC, 'utils/dom.js'),
+			path.resolve(SRC, 'utils/page.js')
+		],
+		app: path.resolve(SRC, 'app.js'),
+	},
 	output: {
 		path: DIST,
 		filename: 'app.js',
@@ -79,6 +87,10 @@ const config = {
 	},
 	plugins: [
 		new CleanWebpackPlugin([DIST]),		
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'commons',
+			filename: '[name].js'
+		}),
 		generatePage,
 		injectScript,		
 		extractCriticalStyle,
@@ -87,7 +99,7 @@ const config = {
 		new OptimizeCssAssetsWebpackPlugin(),
 		new HtmlWebpackExcludeAssetsPlugin(),
 		copyPwaFiles,
-		copyImages
+		copyImages,
 	]
 }
 

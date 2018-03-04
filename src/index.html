@@ -8,6 +8,19 @@
 	<title><%= htmlWebpackPlugin.options.title %></title>
 	<link rel="shortcut icon" type="image/png" href="images/wwwid-small.png">
 	<link rel="manifest" href="manifest.json">
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://api.rss2json.com" crossorigin>
+	<link rel="preload" href="commons.js" as="script">
+	<link rel="preload" href="app.js" as="script">
+	<link rel="preload" href="app.css" as="style">
+	<link rel="preload" href="images/wwwid-192.png" as="image">
+	<link rel="preload" href="images/wwwid-hollow-192.png" as="image">
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('service-worker.js')
+		}
+	</script>
 </head>
 <body>
 	<div id="app">
@@ -22,7 +35,7 @@
 	</div>	
 	<footer>Crafted with &hearts; by sdarmaputra</footer>
 	<noscript id="deferred-styles">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet" crossorigin>
 		<link href="app.css" rel="stylesheet">	
 	</noscript>
 	<script>
