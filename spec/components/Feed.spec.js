@@ -36,7 +36,7 @@ describe('Feed', () => {
 		expect(thumbnail).toBeHTMLElement('div')
 		expect(thumbnail).toHaveClass('feed__thumbnail')
 		expect(img).toBeHTMLElement('img')
-		expect(img).toHaveAttribute('data-src', props.thumbnail)
+		expect(img).toHaveAttribute('data-src', 'https://res.cloudinary.com/sdarmaputra/image/fetch/q_auto:low,f_auto,h_80,w_80,c_lfill,g_north_west/' + props.thumbnail)
 	})
 
 	it('should contain info', () => {

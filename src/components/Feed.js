@@ -25,7 +25,7 @@ const thumbnail = ({ thumbnail, title }) => {
 		src: 'images/wwwid-hollow-192.png',
 		alt: "Image for " + title
 	})
-	img.dataset.src = thumbnail
+	img.dataset.src = 'https://res.cloudinary.com/sdarmaputra/image/fetch/q_auto:low,f_auto,h_80,w_80,c_lfill,g_north_west/' + thumbnail
 	el.append(img)
 	return el
 }
