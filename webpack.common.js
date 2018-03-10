@@ -31,12 +31,16 @@ const generatePage = new HTMLWebpackPlugin({
 const extractCriticalStyle = new ExtractTextPlugin({
 	filename: 'critical.css'
 })
+const extractFontStyle = new ExtractTextPlugin({
+	filename: 'font.css'
+})
 const extractStyle = new ExtractTextPlugin({
 	filename: 'app.css'
 })
 const copyPwaFiles = new CopyWebpackPlugin([
 	path.resolve(SRC, 'manifest.json'),
-	path.resolve(SRC, 'service-worker.js')
+	path.resolve(SRC, 'service-worker.js'),
+	path.resolve(SRC, 'font.css')
 ])
 const copyImages = new CopyWebpackPlugin([
 	{ 
@@ -74,6 +78,15 @@ const config = {
 				})
 			},
 			{
+				test: /\.fontstyle$/,
+				use: extractFontStyle.extract({
+					use: [
+						'css-loader'
+					],
+					fallback: 'style-loader'
+				})
+			},
+			{
 				test: /\.scss$/,
 				use: extractStyle.extract({
 					use: [
@@ -94,7 +107,8 @@ const config = {
 		generatePage,
 		injectScript,		
 		extractCriticalStyle,
-		new StyleExtHtmlWebpackPlugin('critical.css'),
+		new StyleExtHtmlWebpackPlugin('critical.css'),		
+		extractFontStyle,
 		extractStyle,
 		new OptimizeCssAssetsWebpackPlugin(),
 		new HtmlWebpackExcludeAssetsPlugin(),
