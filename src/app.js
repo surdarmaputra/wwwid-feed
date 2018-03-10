@@ -10,7 +10,7 @@ const Filter = require('./containers/Filter')
 const Category = require('./containers/Category')
 const Page = require('./containers/Page')
 
-const sourceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid'
+const sourceUrl = 'feeds'
 
 const store = {
 	appName: 'WWWID Reader',
