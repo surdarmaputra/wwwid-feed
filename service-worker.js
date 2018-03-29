@@ -8,6 +8,7 @@ const filesToCache = [
 	mainUrl + '#/',
 	mainUrl + 'index.html',
 	mainUrl + 'app.css',
+	mainUrl + 'font.css',
 	mainUrl + 'app.js',
 	mainUrl + 'manifest.json',
 	mainUrl + 'images/wwwid-512.png',
